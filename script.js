@@ -1,16 +1,10 @@
 $(".start").click(function () {
-  if (window.innerHeight > window.innerWidth) {
-    // Màn hình đang ở chế độ dọc
-    $(".stage1").fadeOut();
-    fire_modal(
-      "https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/cake_modal.png",
-      "Let’s make a cake!",
-      "Since it’s your birthday, I find it only fitting that you get to make your own digital birthday cake. Start by making your cake mixture, then bake it in a digital oven and finally decorate. Have fun and happy birthday"
-    );
-  } else {
-    // Yêu cầu người dùng xoay thiết bị vào chế độ dọc
-    alert("Please rotate your device to portrait mode to continue.");
-  }
+  $(".stage1").fadeOut();
+  fire_modal(
+    "https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/cake_modal.png",
+    "Let’s make a cake!",
+    "Since it’s your birthday, I find it only fitting that you get to make your own digital birthday cake. Start by making your cake mixture, then bake it in a digital oven and finally decorate. Have fun and happy birthday"
+  );
 });
 
 progress = 1;

@@ -30,7 +30,6 @@ body .birthday .add:hover {
   color: white;
 }
 body .birthday_inner__modal {
-  width: 500px;
   position: absolute;
   left: 0;
   right: 0;
@@ -89,7 +88,6 @@ body .birthday_inner .stage1 {
   display: block;
 }
 body .birthday_inner__stage {
-  width: 500px;
   position: absolute;
   left: 0;
   right: 0;
@@ -117,7 +115,7 @@ body .birthday_inner__stage .mix {
 body .birthday_inner__stage .mix_spoon {
   position: absolute;
   top: -37px;
-  left: 200px;
+  left: 150px;
   -webkit-transform: rotate(0deg) translateX(15px) translateY(3px) rotate(0deg)
     scale(1);
 }
