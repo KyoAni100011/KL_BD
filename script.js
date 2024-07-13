@@ -54,19 +54,38 @@ $(".mixer").click(function () {
   }
 });
 
-$(".tin").draggable({
-  revert: true,
-});
-$(".oven").droppable({
-  drop: function (event, ui) {
+// Kiểm tra nếu là thiết bị di động
+let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+// Sử dụng đúng sự kiện tương ứng với từng trường hợp
+if (isMobile) {
+  // Thiết lập sự kiện click cho .tin trên điện thoại
+  $(".tin").on("click", function () {
     $(".stage3").fadeOut();
     fire_modal(
       "https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/oven_modal.png",
-      "Bake successfull!",
+      "Bake successful!",
       "Yes! You are a master chef. The base is fully baked and looks super yummy. Now its time to combine this base with lots of other ingredients like jam, marmalade, chocolate and more."
     );
-  },
-});
+  });
+} else {
+  // Thiết lập kéo thả cho .tin trên máy tính
+  $(".tin").draggable({
+    revert: true,
+  });
+
+  // Thiết lập sự kiện droppable cho .oven trên máy tính
+  $(".oven").droppable({
+    drop: function (event, ui) {
+      $(".stage3").fadeOut();
+      fire_modal(
+        "https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/oven_modal.png",
+        "Bake successful!",
+        "Yes! You are a master chef. The base is fully baked and looks super yummy. Now its time to combine this base with lots of other ingredients like jam, marmalade, chocolate and more."
+      );
+    },
+  });
+}
 
 bases = 0;
 fillings = 0;
