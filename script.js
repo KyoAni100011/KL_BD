@@ -155,7 +155,6 @@ function fin() {
 function add_candle() {
   var stages = $(".cakemake > div").length;
   var h = (stages / 2) * 41 + 22 + "px";
-  console.log(stages);
   $(".cakemake").prepend(
     '<div class="candle" ><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/candle.png" /></div>'
   );

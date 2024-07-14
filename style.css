@@ -434,8 +434,10 @@ body .birthday_inner__stage .start {
 }
 
 .wish {
-  margin-top: 70px;
+  margin-top: 20px;
   display: none;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 svg {
