@@ -162,6 +162,7 @@ function add_candle() {
   $("svg").show();
   setTimeout(function () {
     $(".sa").fadeIn();
+    $(".wish").fadeIn();
   }, 2200);
 }
 

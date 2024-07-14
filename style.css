@@ -433,6 +433,11 @@ body .birthday_inner__stage .start {
   margin-bottom: 40px;
 }
 
+.wish {
+  margin-top: 70px;
+  display: none;
+}
+
 svg {
   width: 390px;
   height: 90px;
