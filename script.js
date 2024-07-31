@@ -147,10 +147,57 @@ function fin() {
   setTimeout(function () {
     $(".cakemake").fadeIn();
     $(".cakemake").animate({ "margin-top": "0px" });
+
+    createFireworks();
   }, 1000);
   add_candle();
   $("svg").addClass("text");
 }
+
+function createFireworks() {
+  for (let i = 0; i < 100; i++) {
+    setTimeout(() => {
+      let firework = document.createElement("div");
+      firework.classList.add("firework");
+      firework.style.top = `${Math.random() * window.innerHeight}px`;
+      firework.style.left = `${Math.random() * window.innerWidth}px`;
+      document.body.appendChild(firework);
+
+      setTimeout(() => {
+        firework.remove();
+      }, 1000);
+    }, i * 100);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const images = document.querySelectorAll(".random-image");
+  const imageWidth = 100; // Chiều rộng của ảnh
+  const imageHeight = 100; // Chiều cao của ảnh
+  const positions = [];
+
+  function isOverlapping(x, y) {
+    for (let pos of positions) {
+      const isOverlappingX = x < pos.x + imageWidth && x + imageWidth > pos.x;
+      const isOverlappingY = y < pos.y + imageHeight && y + imageHeight > pos.y;
+      if (isOverlappingX && isOverlappingY) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  images.forEach((image) => {
+    let x, y;
+    do {
+      x = Math.random() * (window.innerWidth - imageWidth);
+      y = Math.random() * (window.innerHeight - imageHeight);
+    } while (isOverlapping(x, y));
+    positions.push({ x, y });
+    image.style.left = `${x}px`;
+    image.style.top = `${y}px`;
+  });
+});
 
 function add_candle() {
   var stages = $(".cakemake > div").length;

@@ -558,6 +558,42 @@ svg {
   align-items: center;
 }
 
+.firework {
+  position: absolute;
+  width: 15px;
+  height: 20px;
+  background-color: #e77572;
+  border-radius: 5%;
+  animation: rise 1s ease-in, explode 0.5s ease-out 1s forwards;
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(100vh);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.random-image {
+  position: absolute;
+  z-index: -1; /* Đặt ảnh ngẫu nhiên phía sau các phần tử khác */
+  width: 250px; /* Đặt chiều rộng của ảnh ngẫu nhiên */
+  opacity: 0.2;
+}
+
+@keyframes explode {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(3);
+  }
+}
+
 .text {
   font-size: 3.5em;
   font-weight: bold;
