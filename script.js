@@ -147,27 +147,9 @@ function fin() {
   setTimeout(function () {
     $(".cakemake").fadeIn();
     $(".cakemake").animate({ "margin-top": "0px" });
-
-    createFireworks();
   }, 1000);
   add_candle();
   $("svg").addClass("text");
-}
-
-function createFireworks() {
-  for (let i = 0; i < 100; i++) {
-    setTimeout(() => {
-      let firework = document.createElement("div");
-      firework.classList.add("firework");
-      firework.style.top = `${Math.random() * window.innerHeight}px`;
-      firework.style.left = `${Math.random() * window.innerWidth}px`;
-      document.body.appendChild(firework);
-
-      setTimeout(() => {
-        firework.remove();
-      }, 1000);
-    }, i * 100);
-  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -176,26 +158,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const imageHeight = 100; // Chiều cao của ảnh
   const positions = [];
 
-  function isOverlapping(x, y) {
-    for (let pos of positions) {
-      const isOverlappingX = x < pos.x + imageWidth && x + imageWidth > pos.x;
-      const isOverlappingY = y < pos.y + imageHeight && y + imageHeight > pos.y;
-      if (isOverlappingX && isOverlappingY) {
-        return true;
-      }
-    }
-    return false;
+  function isOverlapping(rect1, rect2) {
+    return !(
+      rect1.right < rect2.left ||
+      rect1.left > rect2.right ||
+      rect1.bottom < rect2.top ||
+      rect1.top > rect2.bottom
+    );
   }
 
   images.forEach((image) => {
-    let x, y;
+    let x, y, rect;
     do {
       x = Math.random() * (window.innerWidth - imageWidth);
       y = Math.random() * (window.innerHeight - imageHeight);
-    } while (isOverlapping(x, y));
-    positions.push({ x, y });
-    image.style.left = `${x}px`;
-    image.style.top = `${y}px`;
+      image.style.left = `${x}px`;
+      image.style.top = `${y}px`;
+      rect = image.getBoundingClientRect();
+    } while (positions.some((pos) => isOverlapping(rect, pos)));
+    positions.push(rect);
   });
 });
 
