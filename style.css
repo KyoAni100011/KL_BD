@@ -552,22 +552,32 @@ svg {
     opacity: 1;
   }
 }
-.text path {
-  -webkit-animation: dash_loader 4s 2s forwards;
-  animation: dash_loader 4s 2s forwards;
+.svg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@-webkit-keyframes dash_loader {
-  to {
-    stroke-dasharray: 920;
-  }
+.text {
+  font-size: 3.5em;
+  font-weight: bold;
+  fill: none;
+  stroke: #e77572; /* Màu đường viền chữ */
+  stroke-width: 2px;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash_loader 4s ease forwards;
 }
 
 @keyframes dash_loader {
+  from {
+    stroke-dashoffset: 1000;
+  }
   to {
-    stroke-dasharray: 920;
+    stroke-dashoffset: 0;
   }
 }
+
 path,
 polyline,
 line {
