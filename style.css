@@ -601,7 +601,7 @@ svg {
   font-weight: bold;
   fill: #e77572;
   stroke: #e77572;
-  stroke-width: 2px;
+  stroke-width: 7px;
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
   animation: dash_loader 4s ease forwards;
